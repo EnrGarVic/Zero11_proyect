@@ -27,6 +27,9 @@ nav a{
   text-decoration: none;
   position: relative;
 }
+nav a:hover{
+  color: #E40B0B;
+}
 .social{
   display:flex;
   gap: 1rem;
