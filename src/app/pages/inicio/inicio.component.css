@@ -1,0 +1,69 @@
+.barra{
+  position: relative;
+  max-width: 2000px;
+  margin:0 auto;
+}
+.barra img{
+  width: 100%;
+  height: auto;
+  display: block; 
+  /* para no dejas espacio debajo */
+}
+.texto{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+}
+.texto h1{
+  font-size: 3.5rem;
+  margin: 0;
+}
+.texto h2{
+  font-size: 2.5rem;
+  margin:0;
+}
+.body_container{
+  padding: 40px 20px;
+  background: black;
+  color: white;
+}
+.evento{
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start; /*alinea vericalmente los elementos*/
+ gap: 20px;
+ max-width: 1500px;
+ margin: 0 auto; /*centrado horizontal*/
+ padding: 20px;
+ border: 2px solid white;
+ flex-wrap: wrap;
+}
+.evento_texto{
+  flex: 1; /*para que ocupen todo el espacio disponible */
+}
+.evento_texto h2{
+  font-size: 2rem;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-bottom: 2px solid white;
+}
+.evento img{
+  max-width: 300px;
+  border: 2px solid white;
+}
+@media (min-width: 1400px){
+  .texto h1{
+    font-size: 6rem;
+  }
+  .texto h1{
+    font-size: 5rem;
+  }
+}
