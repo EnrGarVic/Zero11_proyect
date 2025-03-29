@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-locales',
   imports: [],
   templateUrl: './locales.component.html',
-  styleUrl: './locales.component.css'
+  styleUrls: ['./locales.component.css']
 })
 export class LocalesComponent {
 

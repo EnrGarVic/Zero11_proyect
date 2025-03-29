@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-eventos',
   imports: [],
   templateUrl: './eventos.component.html',
-  styleUrl: './eventos.component.css'
+  styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent {
 
