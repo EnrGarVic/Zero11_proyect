@@ -2,17 +2,29 @@
   padding: 2rem;
   text-align: center;
   color: white;
+  border: 2px solid white;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+h2{
+  color: white;
+  text-align: center;
+  margin-top: 0;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
 }
 
 .grid img {
-  width: 100%;
+  width: 380px;
+  height: 350px;
   border-radius: 8px;
-  object-fit: cover;
+}
+.grid img:hover{
+  transform: scale(1.05);
 }

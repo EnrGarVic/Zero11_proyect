@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-galeria',
   imports: [CommonModule],
   templateUrl: './galeria.component.html',
-  styleUrl: './galeria.component.css'
+  styleUrl: './galeria.component.css',
 })
 export class GaleriaComponent implements OnInit {
   fotos: { url: string }[] = [];
@@ -15,8 +15,10 @@ export class GaleriaComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<{ url: string }[]>('/assets/api/instagram.json').subscribe((data) => {
-      this.fotos = data;
-    });
+    this.http
+      .get<{ url: string }[]>('/assets/api/instagram.json')
+      .subscribe((data) => {
+        this.fotos = data;
+      });
   }
 }
