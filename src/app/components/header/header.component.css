@@ -35,7 +35,7 @@ nav a:hover{
   display:flex;
   gap: 1rem;
 }
-@media (max-width: 890px) {
+@media (max-width: 990px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -55,7 +55,7 @@ nav a:hover{
     width: 100%;
   }
 }
-@media (min-width: 1090px){
+@media (min-width: 1300px){
   nav{
     gap :6rem;
   }
