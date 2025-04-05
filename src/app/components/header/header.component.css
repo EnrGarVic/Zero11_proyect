@@ -16,11 +16,12 @@ body{
 }
 nav{
   display: flex;
-  gap: 2.5rem;
+  gap: 8rem;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
   padding-top: 6px;
   padding-bottom: 5px;
+  ;
 }
 nav a{
   color: white;
@@ -47,7 +48,7 @@ nav a:hover{
     justify-content: center;
     width: 100%;
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.5rem;;
   }
 
   .social {

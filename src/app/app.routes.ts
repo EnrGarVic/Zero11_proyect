@@ -6,8 +6,10 @@ import { ReservasComponent } from './pages/reservas/reservas.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { LocalesComponent } from './pages/locales/locales.component';
 import { CuentaComponent } from './pages/cuenta/cuenta.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 export const routes: Routes = [
+  { path: 'admin', component: AdminComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'carta', component: CartaComponent },
   { path: 'eventos', component: EventosComponent },
