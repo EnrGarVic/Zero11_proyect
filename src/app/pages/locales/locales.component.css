@@ -1,4 +1,5 @@
-.carousel-custom {
-  max-width: 800px;
-  margin: 0 auto;
+
+.carousel-inner img {
+  height: 650px;
+  object-fit: cover;
 }
