@@ -1,1 +1,21 @@
-<p>carta works!</p>
+<div class="container my-5">
+  <h1 class="text-center mb-4">Nuestra Carta</h1>
+
+  <div class="row">
+    <div class="col-md-6 mb-4" *ngFor="let categoria of categorias">
+      <div class="card h-100">
+        <div class="card-body">
+          <h4 class="card-title text-center text-uppercase fw-bold">{{ categoria.nombre }}</h4>
+          <ul class="list-unstyled mt-3">
+            <li *ngFor="let producto of categoria.productos">
+              <div class="d-flex justify-content-between">
+                <span>{{ producto.nombre }}</span>
+                <span class="fw-bold">{{ producto.precio }} €</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
