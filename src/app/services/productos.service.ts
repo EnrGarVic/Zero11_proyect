@@ -8,17 +8,30 @@ export interface Producto {
   precio: number;
   categoria_id: number;
 }
-
+export interface CategoriaConProductos {
+  id: number;
+  nombre: string;
+  productos: {
+    id: number;
+    nombre: string;
+    precio: number;
+  }[];
+}
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductosService {
-
   private apiUrl = 'http://localhost:3000/productos';
-  
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {}
 
   getProductos(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.apiUrl);
+  }
+
+  getCategoriasConProductos(): Observable<CategoriaConProductos[]> {
+    return this.http.get<CategoriaConProductos[]>(
+      'http://localhost:3000/categorias-con-productos'
+    );
   }
 }
