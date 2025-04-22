@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -14,21 +15,27 @@ export class AdminLoginComponent {
   usuario = '';
   contrasena = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
   
   cerrarModal() {
     window.location.href = '/';
   }
   iniciarSesion() {
-    const usuarioValido = 'admin';
-    const contrasenaValida = 'admin123';
-    if (this.usuario === usuarioValido && this.contrasena === contrasenaValida) {
+  const datos = {
+    usuario: this.usuario,
+    password: this.contrasena
+  };
 
-      localStorage.setItem('admin', 'true');
-
-      this.router.navigate(['/admin/panel']);
-    }else {
+  this.http.post('http://localhost:3000/login-admin', datos).subscribe(
+    (response: any) => {
+      if (response.success) {
+        localStorage.setItem('admin', 'true');
+        this.router.navigate(['/admin/panel']);
+      }
+    },
+    (error) => {
       alert('Usuario o contraseña incorrectos');
     }
-  }
+  );
+}
 }
