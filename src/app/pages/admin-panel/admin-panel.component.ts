@@ -44,4 +44,8 @@ export class AdminPanelComponent {
       }
     );
   }
+  logout() {
+    localStorage.removeItem('admin');
+    window.location.href = '/';
+  }
 }
