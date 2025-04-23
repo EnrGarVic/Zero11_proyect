@@ -1,1 +1,31 @@
-<p>admin-panel works!</p>
+<div class="container mt-5 ">
+  <h2 class="text-center mb-4 text-light">Añadir producto a la carta</h2>
+  <form (ngSubmit)="enviarProducto()" class="p-4 border rounded bg-black text-white">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre del producto</label>
+      <input type="text" id="nombre" class="form-control" [(ngModel)]="nombre" name="nombre" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio (€)</label>
+      <input type="number" id="precio" class="form-control" [(ngModel)]="precio" name="precio" required />
+    </div>
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoría</label>
+      <select
+        class="form-select"
+        id="categoria"
+        [(ngModel)]="categoria_id"
+        name="categoria_id"
+        required
+      >
+        <option value="" disabled selected>Selecciona una categoría</option>
+        <option *ngFor="let cat of categorias" [value]="cat.id">
+          {{ cat.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-danger w-100">Añadir producto</button>
+  </form>
+</div>
