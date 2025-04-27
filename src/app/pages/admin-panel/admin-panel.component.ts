@@ -19,7 +19,10 @@ export class AdminPanelComponent {
 
   constructor(private http: HttpClient) {}
 
+  isAdmin: boolean = false;
+
   ngOnInit(): void {
+    this.isAdmin = !!localStorage.getItem('token');
     this.http.get<any[]>('http://localhost:3000/categorias').subscribe((data) => {
       this.categorias = data;
     });
@@ -45,7 +48,7 @@ export class AdminPanelComponent {
     );
   }
   logout() {
-    localStorage.removeItem('admin');
+    localStorage.removeItem('token');
     window.location.href = '/';
   }
 }

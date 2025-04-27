@@ -13,6 +13,12 @@ export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;
 
   ngOnInit(): void {
-    this.isAdmin = localStorage.getItem('admin') === 'true';
+    this.isAdmin = !!localStorage.getItem('token');
+
+    //fixme
+    setInterval(() => {
+      this.isAdmin = !!localStorage.getItem('token');
+    }, 500);
   }
+  
 }

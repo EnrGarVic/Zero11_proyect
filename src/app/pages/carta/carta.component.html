@@ -14,7 +14,7 @@
                 <span>{{ producto.nombre }}</span>
                 <span class="fw-bold">
                   {{ producto.precio }} 
-                  <ng-container *ngIf="esAdmin">
+                  <ng-container *ngIf="isAdmin">
                     <button
                       class="btn btn-danger btn-sm ms-2"
                       (click)="eliminarProducto(producto.id)"

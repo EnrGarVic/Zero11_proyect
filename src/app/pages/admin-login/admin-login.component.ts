@@ -28,8 +28,8 @@ export class AdminLoginComponent {
 
   this.http.post('http://localhost:3000/login-admin', datos).subscribe(
     (response: any) => {
-      if (response.success) {
-        localStorage.setItem('admin', 'true');
+      if (response.token) {
+        localStorage.setItem('token', response.token);
         this.router.navigate(['/admin/panel']);
       }
     },

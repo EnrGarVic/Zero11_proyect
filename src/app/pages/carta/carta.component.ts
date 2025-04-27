@@ -12,13 +12,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CartaComponent implements OnInit {
   categorias: CategoriaConProductos[] = [];
-  esAdmin: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private productosService: ProductosService, private http:HttpClient ) {}
 
   ngOnInit(): void {
-    this.categorias = [];
-    this.esAdmin = localStorage.getItem('admin') === 'true';
+    this.isAdmin = !!localStorage.getItem('token'); 
     this.productosService.getCategoriasConProductos().subscribe((producto) => {
       this.categorias = producto;
     });
