@@ -15,6 +15,7 @@ export interface CategoriaConProductos {
     id: number;
     nombre: string;
     precio: number;
+    categoria_id: number;
   }[];
 }
 @Injectable({
@@ -33,5 +34,23 @@ export class ProductosService {
     return this.http.get<CategoriaConProductos[]>(
       'http://localhost:3000/categorias-con-productos'
     );
+  }
+  editarProducto(producto: Producto) {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+
+    return this.http.put(
+      `${this.apiUrl}/${producto.id}`,
+      producto,
+      { headers }
+    );
+  }
+  eliminarProducto(id: number) {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+
+    return this.http.delete(`${this.apiUrl}/${id}`, {
+      headers,
+    });
   }
 }
