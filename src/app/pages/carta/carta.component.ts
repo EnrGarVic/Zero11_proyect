@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   selector: 'app-carta',
   imports: [CommonModule, FormsModule],
+  providers: [ProductosService],
   templateUrl: './carta.component.html',
   styleUrls: ['./carta.component.css']
 })
