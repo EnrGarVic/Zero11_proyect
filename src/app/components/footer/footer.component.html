@@ -1,25 +1,14 @@
 <footer>
   <h2>Contacto</h2>
   <div class="footer-container">
-    <div class="local">
-      <h4>Zero11 Russafa</h4>
-      <a href="https://maps.app.goo.gl/sMHXVSnP6CCRME6LA" target="_blank" 
-      rel="noopener noreferrer">
-      Dirección: C/ de Pere III el Gran, 15, Bajo derecha, Ensanche, 46005 
-      Valencia</a>
-      <p>Whatsapp: 653 16 10 89</p>
-      <p>Horario: Lun-Mar-Dom 18:30 - 00:30 Mier - Jue 18:30 - 01:00 
-        Vie - Sab 18:30 - 01:30</p>
+    <div class="local" *ngFor="let local of locales">
+      <h4>{{ local.nombre }}</h4>
+      <a [href]="local.enlace_maps" target="_blank" rel="noopener noreferrer">
+        Dirección: {{ local.direccion }}
+      </a>
+      <p>Whatsapp: {{ local.telefono }}</p>
+      <p>Horario: {{ local.horario }}</p>
     </div>
-    <div class="local">
-      <h4>Zero11 Cabanyal</h4>
-      <a href="https://maps.app.goo.gl/dcwhvVL5XJAc69ZJA" target="_blank" 
-      rel="noopener noreferrer">
-      Dirección: C/ de Vidal de Canelles, 27, Poblats Marítims, 46011 València, 
-      Valencia</a>
-      <p>Whatsapp: 653 16 10 89</p>
-      <p>Horario: Mar 20:30 - 19:00 Mier-Jue 18:30 - 00:30 Vie-Sab 18:30 - 01:30</p>
-    </div>
-    <p>2025-Zero11</p>
+    <p>2025 - Zero11</p>
   </div>
 </footer>
