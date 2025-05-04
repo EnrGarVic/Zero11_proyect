@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   standalone: true,
@@ -17,12 +18,12 @@ export class AdminPanelComponent {
   categoria_id: number | null = null;
   categorias: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   isAdmin: boolean = false;
 
   ngOnInit(): void {
-    this.isAdmin = !!localStorage.getItem('token');
+    this.isAdmin = !!sessionStorage.getItem('token');
     this.http.get<any[]>('http://localhost:3000/categorias').subscribe((data) => {
       this.categorias = data;
     });
@@ -48,7 +49,7 @@ export class AdminPanelComponent {
     );
   }
   logout() {
-    localStorage.removeItem('token');
+    this.authService.logout();
     window.location.href = '/';
   }
 }

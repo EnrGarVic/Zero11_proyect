@@ -36,7 +36,7 @@ export class ProductosService {
     );
   }
   editarProducto(producto: Producto) {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
 
     return this.http.put(
@@ -46,7 +46,7 @@ export class ProductosService {
     );
   }
   eliminarProducto(id: number) {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
 
     return this.http.delete(`${this.apiUrl}/${id}`, {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +13,11 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;
 
-  ngOnInit(): void {
-    this.isAdmin = !!localStorage.getItem('token');
+  constructor(private authService: AuthService) {}
 
-    //fixme
-    setInterval(() => {
-      this.isAdmin = !!localStorage.getItem('token');
-    }, 500);
+  ngOnInit(): void {
+    this.authService.isAdmin$.subscribe((status) => { 
+      this.isAdmin = status;
+    });
   }
-  
 }

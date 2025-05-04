@@ -19,7 +19,7 @@ export class CartaComponent implements OnInit {
   constructor(private productosService: ProductosService) {}
 
   ngOnInit(): void {
-    this.isAdmin = !!localStorage.getItem('token'); 
+    this.isAdmin = !!sessionStorage.getItem('token'); 
     this.productosService.getCategoriasConProductos().subscribe((producto) => {
       this.categorias = producto;
     });

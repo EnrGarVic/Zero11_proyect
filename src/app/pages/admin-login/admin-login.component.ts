@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AdminLoginComponent {
   usuario = '';
   contrasena = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) {}
   
   cerrarModal() {
     window.location.href = '/';
@@ -29,7 +30,7 @@ export class AdminLoginComponent {
   this.http.post('http://localhost:3000/login-admin', datos).subscribe(
     (response: any) => {
       if (response.token) {
-        localStorage.setItem('token', response.token);
+        this.authService.login(response.token);
         this.router.navigate(['/admin/panel']);
       }
     },
