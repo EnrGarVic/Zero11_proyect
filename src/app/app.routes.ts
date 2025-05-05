@@ -8,11 +8,13 @@ import { LocalesComponent } from './pages/locales/locales.component';
 import { CuentaComponent } from './pages/cuenta/cuenta.component';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { AdminEventosComponent } from './pages/admin-eventos/admin-eventos.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: 'admin', component: AdminLoginComponent },
   { path: 'admin/panel', component: AdminPanelComponent, canActivate: [authGuard] },
+  { path: 'admin/eventos', component: AdminEventosComponent, canActivate: [authGuard] },
   { path: 'inicio', component: InicioComponent },
   { path: 'carta', component: CartaComponent },
   { path: 'eventos', component: EventosComponent },
