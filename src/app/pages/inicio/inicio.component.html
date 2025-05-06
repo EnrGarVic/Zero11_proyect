@@ -7,15 +7,14 @@
 </div>
 <div class="body_container">
   <h3 class="evento_h3">Próximo evento</h3>
-  <div class="evento">
+  <div class="evento" *ngIf="eventoProximo">
     <div class="evento_texto">
-      <h2>IMPRO#2</h2>
-      <h3>Jueves, 6 de Junio 2024 a las 20:30</h3>
-      <p>"IMPRO LAB. Desafios de improvisación teatral a cargo de los improvisadores
-        de Laboratorio impro. Ven y ponles a prueba!!!3..2..1..IMPRO!"</p>
+      <h2>{{ eventoProximo.titulo }}</h2>
+      <h3>{{ eventoProximo.fecha }} a las {{ eventoProximo.hora }}</h3>
+      <p>{{ eventoProximo.descripcion }}</p>
     </div>
     <div>
-      <img src="assets/fotos/eventos/evento.png" alt="evento">
+      <img [src]="eventoProximo.imagen" alt="evento">
     </div>
   </div>
 </div>

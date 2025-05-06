@@ -1,54 +1,27 @@
 <div class="container mt-5">
   <!-- Próximo evento -->
   <h3 class="text-center mb-4 text-light">Próximo evento</h3>
-  <div class="card mb-5">
-    <div class="row g-0">
-      <div class="col-md-8">
-        <div class="card-body">
-          <h2 class="card-title">IMPRO#2</h2>
-          <h3 class="card-subtitle mb-3 text-muted">Jueves, 6 de Junio 2024 a las 20:30</h3>
-          <p class="card-text">
-            "IMPRO LAB. Desafíos de improvisación teatral a cargo de los improvisadores
-            de Laboratorio impro. Ven y ponles a prueba!!! 3..2..1..IMPRO!"
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <img src="assets/fotos/eventos/evento.png" class="img-fluid rounded-end" alt="evento">
-      </div>
+  <div class="row text-white p-4 rounded mb-5 border border-light myCard w-75 mx-auto" *ngIf="eventoProximo">
+    <div class="col-md-7 d-flex flex-column justify-content-start">
+      <h2 class="fw-bold">{{ eventoProximo.titulo }}</h2>
+      <h4 class="mb-3">{{ eventoProximo.fecha | date:'dd/MM/yyyy' }} a las {{ eventoProximo.hora }}</h4>
+      <p>{{ eventoProximo.descripcion }}</p>
+    </div>
+    <div class="col-md-5 text-center">
+      <img [src]="eventoProximo.imagen" class="img-fluid rounded" alt="evento">
     </div>
   </div>
 
   <h3 class="text-center mb-4 text-light">Eventos</h3>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <!-- Evento 1 -->
-    <div class="col">
-      <div class="card h-100">
-        <img src="assets/fotos/eventos/evento1.png" class="card-img-top" alt="evento1">
+  <div class="row text-white row-cols-1 row-cols-md-2 g-4 justify-content-center w-75 mx-auto ">
+    <div class="col" *ngFor="let evento of eventos">
+      <div class="card h-100 myCard text-white border border-light">
+        <img [src]="evento.imagen" class="card-img-top" [alt]="evento.titulo">
         <div class="card-body">
-          <h5 class="card-title">Evento 1</h5>
-          <p class="card-text">Descripción breve del evento 1.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Evento 2 -->
-    <div class="col">
-      <div class="card h-100">
-        <img src="assets/fotos/eventos/evento2.png" class="card-img-top" alt="evento2">
-        <div class="card-body">
-          <h5 class="card-title">Evento 2</h5>
-          <p class="card-text">Descripción breve del evento 2.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Evento 3 -->
-    <div class="col">
-      <div class="card h-100">
-        <img src="assets/fotos/eventos/evento3.png" class="card-img-top" alt="evento3">
-        <div class="card-body">
-          <h5 class="card-title">Evento 3</h5>
-          <p class="card-text">Descripción breve del evento 3.</p>
-        </div>
+          <h5 class="card-title">{{ evento.titulo }}</h5>
+          <p class="card-text">{{ evento.descripcion }}</p>
+          <p class="card-text"><small class="text-white">{{ evento.fecha | date:'dd/MM/yyyy' }} a las {{ evento.hora }}</small></p>
+        </div> 
       </div>
     </div>
   </div>
