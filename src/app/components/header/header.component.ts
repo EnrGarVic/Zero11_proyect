@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;
+  menuAbierto = false;
 
   constructor(private authService: AuthService) {}
 

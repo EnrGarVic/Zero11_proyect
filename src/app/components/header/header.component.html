@@ -1,34 +1,98 @@
-<header class="header">
-  <!-- routelink: es el equivalente a href en angular
-  routerLinkActive: aplica una clase CSS automáticamente cuando esa ruta está activa. -->
-  <div class="headerLogo">
-    <a routerLink="/">
-      <img src="/assets/fotos/logo/logo.png" alt="Logo Zero11" width="120">
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-black px-3 border-bottom border-white p-4"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img src="/assets/fotos/logo/logo.png" alt="Logo Zero11" height="50" />
     </a>
-  </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarZero11"
+      aria-controls="navbarZero11"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <nav>
-    <a routerLink="/carta" routerLinkActive="active">Carta</a>
-    <a routerLink="/eventos" routerLinkActive="active">Eventos</a>
-    <!-- <a routerLink="/reservas" routerLinkActive="active">Reservas</a> -->
-    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
-    <a routerLink="/locales" routerLinkActive="active">Locales</a>
-    <ng-container *ngIf="isAdmin">
-      <a routerLink="/admin/panel" routerLinkActive="active">Añadir producto</a>
-      <a routerLink="/admin/eventos" routerLinkActive="active">Añadir evento</a>
-    </ng-container> 
-    <!-- <a routerLink="/cuenta" routerLinkActive="active">Mi cuenta</a> -->
-  </nav>
-
-  <div class="social">
-    <a href="https://www.instagram.com/zero11.vlc/?hl=es" target="_blank" aria-label="Instagram">
-      <img src="/assets/fotos/media/instagram.png" alt="Instagram Logo" width="30">
-    </a>
-    <a href="https://www.facebook.com/people/zero11_craftbeerbar/100083147629377/" target="_blank" aria-label="Facebook">
-      <img src="/assets/fotos/media/facebook.png" alt="Facebook Logo" width="30">
-    </a>
-    <a href="https://wa.me/34653161089" target="_blank" aria-label="Whatsapp">
-      <img src="/assets/fotos/media/whatsapp.png" alt="Whatsapp Logo" width="30">
-    </a>
+    <div class="collapse navbar-collapse" id="navbarZero11">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex gap-5">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/carta" routerLinkActive="active"
+            >Carta</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/eventos" routerLinkActive="active"
+            >Eventos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacto" routerLinkActive="active"
+            >Contacto</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/locales" routerLinkActive="active"
+            >Locales</a
+          >
+        </li>
+        <ng-container *ngIf="isAdmin">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/admin/panel"
+              routerLinkActive="active"
+              >Añadir producto</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/admin/eventos"
+              routerLinkActive="active"
+              >Añadir evento</a
+            >
+          </li>
+        </ng-container>
+      </ul>
+      <div class="d-flex gap-3">
+        <a
+          href="https://www.instagram.com/zero11.vlc/?hl=es"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <img
+            src="/assets/fotos/media/instagram.png"
+            alt="Instagram Logo"
+            width="30"
+          />
+        </a>
+        <a
+          href="https://www.facebook.com/people/zero11_craftbeerbar/100083147629377/"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <img
+            src="/assets/fotos/media/facebook.png"
+            alt="Facebook Logo"
+            width="30"
+          />
+        </a>
+        <a
+          href="https://wa.me/34653161089"
+          target="_blank"
+          aria-label="Whatsapp"
+        >
+          <img
+            src="/assets/fotos/media/whatsapp.png"
+            alt="Whatsapp Logo"
+            width="30"
+          />
+        </a>
+      </div>
+    </div>
   </div>
-</header>
+</nav>
