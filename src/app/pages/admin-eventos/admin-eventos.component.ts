@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LocalesService, Local } from '../../services/locales.service';
 import { AuthService } from '../../services/auth.service';
+import { EventosService } from '../../services/eventos.service';
 
 @Component({
   standalone: true,
   selector: 'app-admin-eventos',
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin-eventos.component.html',
   styleUrls: ['./admin-eventos.component.css'],
 })
@@ -25,11 +26,13 @@ export class AdminEventosComponent implements OnInit {
 
   locales: Local[] = [];
   previewUrl: string = '';
+  imagenCargada: boolean = false;
 
   constructor(
     private http: HttpClient,
-    private localesService: LocalesService, 
-    private authService: AuthService
+    private localesService: LocalesService,
+    private authService: AuthService,
+    private eventosService: EventosService
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +54,11 @@ export class AdminEventosComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.evento.imagen = res.url.replace('/upload/', '/upload/w_800,c_limit,q_auto,f_auto/');
+          this.evento.imagen = res.url.replace(
+            '/upload/',
+            '/upload/w_800,c_limit,q_auto,f_auto/'
+          );
+          this.imagenCargada = true;
         },
         error: (err) => {
           console.error('Error al subir la imagen', err);
@@ -61,7 +68,7 @@ export class AdminEventosComponent implements OnInit {
   }
 
   guardarEvento() {
-    this.http.post('http://localhost:3000/eventos', this.evento).subscribe({
+    this.eventosService.añadirEvento(this.evento).subscribe({
       next: () => {
         alert('Evento guardado correctamente');
         this.evento = {
@@ -74,6 +81,7 @@ export class AdminEventosComponent implements OnInit {
           es_proximo: false,
         };
         this.previewUrl = '';
+        this.imagenCargada = false;
       },
       error: (err) => {
         console.error('Error al guardar evento', err);

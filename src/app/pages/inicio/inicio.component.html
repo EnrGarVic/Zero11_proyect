@@ -10,7 +10,10 @@
   <div class="evento" *ngIf="eventoProximo">
     <div class="evento_texto">
       <h2>{{ eventoProximo.titulo }}</h2>
-      <h3>{{ eventoProximo.fecha }} a las {{ eventoProximo.hora }}</h3>
+      <h3>
+        {{ eventoProximo.fecha | date : "dd/MM/yyyy" }} a las
+        {{ eventoProximo.hora.slice(0, 5) }}
+      </h3>
       <p>{{ eventoProximo.descripcion }}</p>
     </div>
     <div>
