@@ -2,46 +2,58 @@
   <!-- Próximo evento -->
   <h3 class="text-center mb-4 text-light">Próximo evento</h3>
   <div
-    class="row text-white p-4 rounded mb-5 border border-light myCard w-75 mx-auto"
+    class="card mb-5 border border-light text-white myCard w-75 mx-auto bg-black"
     *ngIf="eventoProximo"
   >
-    <div class="col-md-7 d-flex flex-column justify-content-start">
-      <h2 class="fw-bold border-bottom border-white">
-        {{ eventoProximo.titulo }}
-      </h2>
-      <h4 class="mb-3">
-        {{ eventoProximo.fecha | date : "dd/MM/yyyy" }} a las
-        {{ eventoProximo.hora.slice(0, 5) }}
-      </h4>
-      <p>{{ eventoProximo.descripcion }}</p>
-    </div>
-    <div class="col-md-5 text-center">
-      <img
-        [src]="eventoProximo.imagen"
-        class="img-fluid rounded"
-        alt="evento"
-      />
-    </div>
-    <div *ngIf="isAdmin" class="mt-3 d-flex justify-content-center gap-2">
-      <button
-        class="btn btn-danger btn-sm"
-        (click)="eliminarEvento(eventoProximo.id)"
-      >
-        Eliminar
-      </button>
-      <!-- <button class="btn btn-primary btn-sm" (click)="editarEvento(eventoProximo)">Editar</button> -->
+    <div class="row g-0">
+      <div class="col-md-7 d-flex flex-column justify-content-start p-4">
+        <div class="card-body">
+          <h2 class="card-title fw-bold border-bottom border-white pb-3">
+            {{ eventoProximo.titulo }}
+          </h2>
+          <h4 class="mb-3 mt-3">
+            {{ eventoProximo.fecha | date : "dd/MM/yyyy" }} a las
+            {{ eventoProximo.hora.slice(0, 5) }}
+          </h4>
+          <p class="card-text">{{ eventoProximo.descripcion }}</p>
+          <div
+            *ngIf="isAdmin"
+            class="mt-3 d-flex justify-content-center gap-2"
+          ></div>
+        </div>
+        <button
+          class="btn btn-danger btn-sm mb-3 mx-auto"
+          (click)="eliminarEvento(eventoProximo.id)"
+        >
+          Eliminar
+        </button>
+      </div>
+      <div class="col-md-5">
+        <img
+          [src]="eventoProximo.imagen"
+          class="img-fluid rounded-end h-100 w-100"
+          style="object-fit: cover"
+          alt="evento"
+        />
+      </div>
     </div>
   </div>
 
-  <h3 class="text-center mb-4 text-light">Eventos</h3>
+  <h3 *ngIf="eventos.length > 0" class="text-center mb-4 text-light">
+    Eventos
+  </h3>
   <div
     class="row text-white row-cols-1 row-cols-md-2 g-4 justify-content-center w-75 mx-auto"
   >
     <div class="col" *ngFor="let evento of eventos">
       <div class="card h-100 myCard text-white border border-light">
-        <img [src]="evento.imagen" class="card-img-top" [alt]="evento.titulo" />
+        <img
+          [src]="evento.imagen"
+          class="card-img-top evento-img"
+          [alt]="evento.titulo"
+        />
         <div class="card-body">
-          <h5 class="card-title border-bottom border-white">
+          <h5 class="card-title border-bottom border-white pb-3">
             {{ evento.titulo }}
           </h5>
           <p class="card-text">{{ evento.descripcion }}</p>
