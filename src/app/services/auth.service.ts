@@ -3,7 +3,9 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private adminSubject = new BehaviorSubject<boolean>(!!sessionStorage.getItem('token'));
+  private adminSubject = new BehaviorSubject<boolean>(
+    !!sessionStorage.getItem('token')
+  );
   isAdmin$ = this.adminSubject.asObservable();
 
   login(token: string) {

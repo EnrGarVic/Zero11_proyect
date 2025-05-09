@@ -1,3 +1,4 @@
+import { environment } from '../../enviroments/enviroment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -22,7 +23,7 @@ export interface CategoriaConProductos {
   providedIn: 'root',
 })
 export class ProductosService {
-  private apiUrl = 'http://localhost:3000/productos';
+  private apiUrl = `${environment.apiUrl}/productos`;
 
   constructor(private http: HttpClient) {}
 
@@ -32,18 +33,16 @@ export class ProductosService {
 
   getCategoriasConProductos(): Observable<CategoriaConProductos[]> {
     return this.http.get<CategoriaConProductos[]>(
-      'http://localhost:3000/categorias-con-productos'
+      `${environment.apiUrl}/categorias-con-productos`
     );
   }
   editarProducto(producto: Producto) {
     const token = sessionStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
 
-    return this.http.put(
-      `${this.apiUrl}/${producto.id}`,
-      producto,
-      { headers }
-    );
+    return this.http.put(`${this.apiUrl}/${producto.id}`, producto, {
+      headers,
+    });
   }
   eliminarProducto(id: number) {
     const token = sessionStorage.getItem('token');

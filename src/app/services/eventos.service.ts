@@ -1,3 +1,4 @@
+import { environment } from '../../enviroments/enviroment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,7 +16,7 @@ export interface Evento {
 
 @Injectable({ providedIn: 'root' })
 export class EventosService {
-  private apiUrl = 'http://localhost:3000/eventos';
+  private apiUrl = `${environment.apiUrl}/eventos`;
 
   constructor(private http: HttpClient) {}
 
@@ -24,17 +25,18 @@ export class EventosService {
   }
 
   getEventoProximo(): Observable<Evento> {
-    return this.http.get<Evento>('http://localhost:3000/eventos/proximo');
+    return this.http.get<Evento>(`${environment.apiUrl}/eventos/proximo`);
   }
+
   eliminarEvento(id: number) {
     const token = sessionStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-
-    return this.http.delete(`http://localhost:3000/eventos/${id}`, { headers });
+    return this.http.delete(`${environment.apiUrl}/eventos/${id}`, { headers });
   }
+
   añadirEvento(evento: any) {
     const token = sessionStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.post('http://localhost:3000/eventos', evento, { headers });
+    return this.http.post(`${environment.apiUrl}/eventos`, evento, { headers });
   }
 }
