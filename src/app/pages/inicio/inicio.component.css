@@ -1,7 +1,11 @@
+body {
+  overflow-x: hidden;
+}
 .barra{
   position: relative;
   max-width: 2000px;
-  margin:0 auto;
+  margin: 0 auto;
+  overflow: hidden;
 }
 .barra img{
   width: 100%;
@@ -21,6 +25,8 @@
   flex-direction: column;
   color: white;
   text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 .texto h1{
   font-size: 4.5rem;
@@ -66,23 +72,51 @@
   max-width: 300px;
   border: 2px solid white;
 }
-.zoom-text {
-  opacity: 0;
-  transform: scale(1.6);
-  animation: fadeZoomIn 1s ease forwards;
+@media (min-width: 768px) {
+  .zoom-text {
+    opacity: 0;
+    transform: scale(1.6);
+    animation: fadeZoomIn 1s ease forwards;
+    will-change: transform, opacity;
+  }
 }
-
+@media (max-width: 767px) {
+  .zoom-text {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 @keyframes fadeZoomIn {
-  to {
+  0% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+  100% {
     opacity: 1;
     transform: scale(1);
   }
 }
 @media (min-width: 1400px){
-  .texto h1{
+  .texto h1 {
     font-size: 6rem;
   }
-  .texto h1{
+  .texto h2 {
     font-size: 5rem;
+  }
+}
+@media (max-width: 768px) {
+  .texto h1 {
+    font-size: 2rem;
+  }
+  .texto h2 {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 480px) {
+  .texto h1 {
+    font-size: 1.5rem;
+  }
+  .texto h2 {
+    font-size: 1.2rem;
   }
 }

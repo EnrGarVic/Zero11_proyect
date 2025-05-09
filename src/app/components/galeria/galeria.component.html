@@ -1,6 +1,26 @@
 <h2>Galería</h2>
-<section class="galeria">
-  <div class="grid">
-    <img *ngFor="let foto of fotos" [src]="foto.url" alt="Imagen de Instagram" />
-  </div>
-</section>
+
+<div *ngIf="isAdmin" class="mb-4 ms-5 text-white">
+  <label for="imagen">Añadir imagen:</label>
+  <input
+    type="file"
+    id="imagen"
+    (change)="subirImagen($event)"
+    [disabled]="imagenCargando"
+  />
+</div>
+
+<div class="body_container">
+  <section class="galeria">
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let foto of fotos">
+        <img [src]="foto.url" alt="foto" class="img-fluid rounded shadow" />
+        <div *ngIf="isAdmin" class="text-center mt-2">
+          <button class="btn btn-danger btn-sm" (click)="eliminarFoto(foto.id)">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

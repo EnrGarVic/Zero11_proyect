@@ -5,26 +5,20 @@
   border: 2px solid white;
   margin-left: 20px;
   margin-right: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
 }
-h2{
+
+.galeria img {
+  width: 100%;
+/* Altura fija para uniformidad */
+  min-height: 400px;
+  object-fit: cover; /* Rellena el espacio recortando */
+  border-radius: 8px;
+}
+h2 {
   color: white;
   text-align: center;
   margin-top: 0;
-}
-
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.grid img {
-  width: 380px;
-  height: 350px;
-  border-radius: 8px;
-}
-.grid img:hover{
-  transform: scale(1.05);
 }

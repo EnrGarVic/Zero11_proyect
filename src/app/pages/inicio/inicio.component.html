@@ -1,24 +1,32 @@
-<div class="barra">
-  <img src="assets/fotos/local/barra.jpg" alt="barra" />
-  <div class="texto zoom-text">
-    <h1>BEER AND FOOD</h1>
-    <h2>VALENCIA</h2>
+<div class="barra position-relative text-center">
+  <img src="assets/fotos/local/barra.jpg" alt="barra" class="img-fluid w-100" />
+  <div
+    class="texto zoom-text position-absolute top-50 start-50 translate-middle text-white"
+  >
+    <!-- Versión escritorio -->
+    <h1 class="display-3 d-none d-md-block">BEER AND FOOD</h1>
+    <h2 class="display-5 d-none d-md-block">VALENCIA</h2>
+    <!-- Versión móvil -->
+    <h1 class="h4 d-block d-md-none">BEER AND FOOD</h1>
+    <h2 class="h5 d-block d-md-none">VALENCIA</h2>
   </div>
 </div>
-<div class="body_container">
-  <h3 class="evento_h3">Próximo evento</h3>
-  <div class="evento" *ngIf="eventoProximo">
-    <div class="evento_texto">
-      <h2>{{ eventoProximo.titulo }}</h2>
-      <h3>
-        {{ eventoProximo.fecha | date : "dd/MM/yyyy" }} a las
-        {{ eventoProximo.hora.slice(0, 5) }}
-      </h3>
-      <p>{{ eventoProximo.descripcion }}</p>
-    </div>
-    <div>
-      <img [src]="eventoProximo.imagen" alt="evento" />
+<div class="">
+  <div class="body_container">
+    <h3 class="evento_h3">Próximo evento</h3>
+    <div class="evento" *ngIf="eventoProximo">
+      <div class="evento_texto">
+        <h2>{{ eventoProximo.titulo }}</h2>
+        <h3>
+          {{ eventoProximo.fecha | date : "dd/MM/yyyy" }} a las
+          {{ eventoProximo.hora.slice(0, 5) }}
+        </h3>
+        <p>{{ eventoProximo.descripcion }}</p>
+      </div>
+      <div>
+        <img [src]="eventoProximo.imagen" alt="evento" />
+      </div>
     </div>
   </div>
+  <app-galeria></app-galeria>
 </div>
-<app-galeria></app-galeria>
