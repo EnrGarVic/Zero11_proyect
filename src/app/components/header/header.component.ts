@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.isAdmin$.subscribe((status) => { 
+    this.authService.checkAdmin();
+    this.authService.isAdmin$.subscribe((status) => {
       this.isAdmin = status;
     });
   }

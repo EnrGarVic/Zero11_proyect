@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
@@ -23,7 +24,7 @@ export class GaleriaComponent implements OnInit {
 
   cargarGaleria() {
     this.http
-      .get<{ id: number; url: string }[]>('http://localhost:3000/galeria')
+      .get<{ id: number; url: string }[]>(`${environment.apiUrl}/galeria`)
       .subscribe((data) => {
         this.fotos = data;
       });
@@ -39,7 +40,7 @@ export class GaleriaComponent implements OnInit {
 
     this.http
       .post<{ url: string }>(
-        'http://localhost:3000/upload-imagen-galeria',
+        `${environment.apiUrl}/upload-imagen-galeria`,
         formData
       )
       .subscribe({
@@ -61,7 +62,7 @@ export class GaleriaComponent implements OnInit {
     const headers = { Authorization: `Bearer ${token}` };
 
     this.http
-      .delete(`http://localhost:3000/galeria/${id}`, { headers })
+      .delete(`${environment.apiUrl}/galeria/${id}`, { headers })
       .subscribe({
         next: () => {
           this.cargarGaleria();
